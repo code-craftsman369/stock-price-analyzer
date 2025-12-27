@@ -112,7 +112,7 @@ def detect_simple_pattern(df):
                 'date': current.name,
                 'type': 'Golden Cross',
                 'price': current['Close'],
-                'description': '買いシグナル: 短期移動平均が長期移動平均を上抜けました'
+                'description': 'Buy signal: Short-term MA crossed above long-term MA'
             })
         
         # デッドクロス（短期MAが長期MAを下抜け）
@@ -122,7 +122,7 @@ def detect_simple_pattern(df):
                 'date': current.name,
                 'type': 'Dead Cross',
                 'price': current['Close'],
-                'description': '売りシグナル: 短期移動平均が長期移動平均を下抜けました'
+                'description': 'Sell signal: Short-term MA crossed below long-term MA'
             })
     
     return patterns
