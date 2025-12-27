@@ -68,11 +68,12 @@ stock-price-analyzer/
 - [ ] More advanced pattern recognition algorithms
 - [ ] Web dashboard interface
 
-## Author
+## 🔗 Author
 
-Tatsu - Blockchain & Python Developer
-- GitHub: [@code-craftsman369](https://github.com/code-craftsman369)
-- Upwork: Professional Freelancer
+**Tatsu**
+
+GitHub: [@code-craftsman369](https://github.com/code-craftsman369)  
+X: [@web3_builder369](https://twitter.com/web3_builder369)
 
 ## License
 
