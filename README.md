@@ -28,8 +28,18 @@ The program will:
 
 ## Example Output
 
-### Chart
+### Multiple Stock Analysis
+
+The tool supports analyzing multiple stocks simultaneously:
+
+#### Apple (AAPL)
 ![AAPL Analysis](data/AAPL_analysis.png)
+
+#### Google (GOOGL)
+![GOOGL Analysis](data/GOOGL_analysis.png)
+
+#### Tesla (TSLA)
+![TSLA Analysis](data/TSLA_analysis.png)
 
 ### Pattern Detection
 ```

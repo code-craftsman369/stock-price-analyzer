@@ -127,37 +127,48 @@ def detect_simple_pattern(df):
     
     return patterns
 
-
 # メイン実行
 if __name__ == "__main__":
-    print("=" * 60)
-    print("Stock Price Analyzer")
-    print("=" * 60)
+    # 複数の株式を分析
+    symbols = ['AAPL', 'GOOGL', 'TSLA']
     
-    # ステップ1: データダウンロード
-    symbol = 'AAPL'
-    data = download_stock_data(symbol, '1y')
-    print(f"\nDownloaded {len(data)} days of data")
+    for symbol in symbols:
+        print("\n" + "=" * 60)
+        print(f"Stock Price Analyzer - {symbol}")
+        print("=" * 60)
+        
+        try:
+            # ステップ1: データダウンロード
+            data = download_stock_data(symbol, '1y')
+            print(f"\nDownloaded {len(data)} days of data")
+            
+            # ステップ2: 移動平均計算
+            data = calculate_moving_averages(data, short_window=5, long_window=20)
+            
+            # ステップ3: パターン検出
+            patterns = detect_simple_pattern(data)
+            
+            if patterns:
+                print(f"\n🎯 Found {len(patterns)} pattern(s):")
+                for pattern in patterns:
+                    print(f"\n  📅 Date: {pattern['date']}")
+                    print(f"  📊 Type: {pattern['type']}")
+                    print(f"  💵 Price: ${pattern['price']:.2f}")
+                    print(f"  📝 {pattern['description']}")
+            else:
+                print("\n✓ No recent patterns detected")
+            
+            # ステップ4: グラフ作成
+            plot_stock_data(data, symbol)
+            
+            print("\n" + "=" * 60)
+            print(f"Analysis complete for {symbol}!")
+            print("=" * 60)
+            
+        except Exception as e:
+            print(f"\n❌ Error analyzing {symbol}: {str(e)}")
+            continue
     
-    # ステップ2: 移動平均計算
-    data = calculate_moving_averages(data, short_window=5, long_window=20)
-    
-    # ステップ3: パターン検出
-    patterns = detect_simple_pattern(data)
-    
-    if patterns:
-        print(f"\n🎯 Found {len(patterns)} pattern(s):")
-        for pattern in patterns:
-            print(f"\n  📅 Date: {pattern['date']}")
-            print(f"  📊 Type: {pattern['type']}")
-            print(f"  💵 Price: ${pattern['price']:.2f}")
-            print(f"  📝 {pattern['description']}")
-    else:
-        print("\n✓ No recent patterns detected")
-    
-    # ステップ4: グラフ作成
-    plot_stock_data(data, symbol)
-    
-    print("\n" + "=" * 60)
-    print("Analysis complete!")
+    print("\n\n" + "=" * 60)
+    print("All analyses complete!")
     print("=" * 60)
